@@ -1,0 +1,49 @@
+<!-- Header and new item -->
+<div>
+  <div class="header center">
+    <h1 class="uppercase mat-display-4" style="margin-bottom: 0px">Todo</h1>
+    <h1 class="mat-display-1" style="margin-bottom: 0px">by not-matthias</h1>
+  </div>
+</div>
+
+<hr />
+
+<!-- Filters -->
+<div class="filters" align="center">
+  <!-- Status filter -->
+  <mat-form-field style="margin-right: 20px">
+    <mat-select [(value)]="statusFilter" placeholder="Filter by status">
+      <mat-option value="all">Everything</mat-option>
+      <mat-option value="done">Completed</mat-option>
+      <mat-option value="not_done">Uncompleted</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- New todo -->
+  <button mat-raised-button (click)="openDialog()" style="margin-right: 20px">Create new todo item.</button>
+
+  <!-- Person filter -->
+  <mat-form-field>
+    <mat-select [(value)]="personFilter" placeholder="Filter by person">
+      <mat-option>Everyone</mat-option>
+      <mat-option *ngFor="let person of people" [value]="person.name">{{ person.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<hr />
+
+<!-- Todos -->
+<div class="todos">
+  <div *ngFor="let todo of filteredTodos" class="padding">
+    <app-todo-item
+      [id]="todo.id"
+      [description]="todo.description"
+      [assignedTo]="todo.assignedTo"
+      [done]="todo.done"
+      (edit)="openDialog(todo)"
+      (complete)="completeTodo(todo)"
+      (delete)="deleteTodo(todo)"
+    ></app-todo-item>
+  </div>
+</div>

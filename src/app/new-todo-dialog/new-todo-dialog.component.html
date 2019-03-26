@@ -1,0 +1,23 @@
+<div>
+  <h1 mat-dialog-title>Todo Editor</h1>
+
+  <div mat-dialog-content>
+    <!-- Name -->
+    <mat-form-field>
+      <input required placeholder="Description" matInput [(ngModel)]="data.todo.description" />
+    </mat-form-field>
+
+    <!-- Asignee -->
+    <mat-form-field>
+      <mat-select [(value)]="data.todo.assignedTo" placeholder="Assigned to">
+        <mat-option>Nobody</mat-option>
+        <mat-option *ngFor="let person of data.people" [value]="person.name">{{ person.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data">Create</button>
+  </div>
+</div>

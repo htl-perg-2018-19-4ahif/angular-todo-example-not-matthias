@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title>
+    {{ description }}
+  </mat-card-title>
+
+  <mat-card-content>
+    {{ 'ID: ' + id }}
+    {{ ', ' }}
+    {{ 'Assigned to: ' + (assignedTo ? assignedTo : 'Nobody') }}
+    {{ ', ' }}
+    {{ 'Done: ' + (done ? 'true' : 'false') }}
+
+    <div style="float: right">
+      <button mat-raised-button (click)="onEditClicked()">Edit</button>
+      <button mat-raised-button (click)="onCompleteClicked()" class="margin-right margin-left">Complete</button>
+      <button mat-raised-button (click)="onDeleteClicked()" color="warn">Delete</button>
+    </div>
+  </mat-card-content>
+
+  <!-- Needed for padding below (can be removed with custom css) -->
+  <mat-card-actions> </mat-card-actions>
+</mat-card>
