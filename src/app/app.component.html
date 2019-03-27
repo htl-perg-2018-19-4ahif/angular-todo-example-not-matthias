@@ -42,7 +42,7 @@
       [assignedTo]="todo.assignedTo"
       [done]="todo.done"
       (edit)="openDialog(todo)"
-      (complete)="completeTodo(todo)"
+      (complete)="!todo.done ? completeTodo(todo) : uncompleteTodo(todo)"
       (delete)="deleteTodo(todo)"
     ></app-todo-item>
   </div>

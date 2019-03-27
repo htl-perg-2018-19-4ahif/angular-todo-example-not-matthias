@@ -36,7 +36,7 @@ enum STATUS {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private readonly apiUrl = 'http://localhost:8081/api';
+  private readonly apiUrl = 'http://localhost:8080/api';
 
   public todos: ITodoItem[] = [];
   public people: IPerson[] = [];
@@ -105,6 +105,23 @@ export class AppComponent implements OnInit {
       // Set the done boolean
       //
       todo.done = true;
+
+      //
+      // Update the todo
+      //
+      this.updateTodo(todo);
+    }
+  }
+
+  //
+  // Uncomplete a todo
+  //
+  public uncompleteTodo(todo: ITodoItem) {
+    if (todo) {
+      //
+      // Set the done boolean
+      //
+      todo.done = false;
 
       //
       // Update the todo
